@@ -13,7 +13,8 @@ __int128 NAME_OF_SYNC_LOCK_TEST_AND_SET(volatile __int128 *subject, __int128 set
         // Loading value of set  into RCX:RBX
         mov   rcx, qword ptr [set + 8]
         mov   rbx, qword ptr [set + 0]
-        
+      
+        jmp   START
 RETRY:  pause
 START:  lock cmpxchg16b xmmword ptr [rdi]
         jnz   RETRY
